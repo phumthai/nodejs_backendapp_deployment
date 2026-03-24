@@ -11,16 +11,14 @@ metadata:
 
 # รายการ resource ที่อยู่ใน base
 resources:
-  - deployment.yaml
-  - service.yaml
+- deployment.yaml
+- service.yaml
 
 # Common labels ที่จะถูก inject เข้าทุก resource
 commonLabels:
   app: my-app
   managed-by: kustomize
-
-# คำสั่งทดสอบ base:
-# kubectl apply -k infra/kustomize/base/ -n dev
-#
-# ดู rendered YAML ก่อน apply:
-# kubectl kustomize infra/kustomize/base/
+images:
+- name: ghcr.io/phumthai/nodejs-backendapp
+  newName: ghcr.io/phumthai/app-repo
+  newTag: 9c4f8e5
